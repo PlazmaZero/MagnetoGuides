@@ -70,7 +70,6 @@ is_system_service: False
 
 ```
 cd ~/katapult
-make
 sudo dfu-util -R -a 0 -s 0x08000000:leave -D ~/katapult/out/katapult.bin -d 0483:df11
 ```
 
