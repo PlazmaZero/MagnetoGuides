@@ -78,6 +78,15 @@ sudo dfu-util -R -a 0 -s 0x08000000:leave -D ~/katapult/out/katapult.bin -d 0483
    ![image](https://github.com/user-attachments/assets/a2f18ba9-7d60-4f71-ba96-69383dd8a4f2)
 
 
+5. Katapult should now be successfully flashed. Take out any DFU jumpers on your linux board (we should have none) and double-click the reset button on your board. Check that the board is in Katapult mode by running
+
+`ls /dev/serial/by-id`
+
+![image](https://github.com/user-attachments/assets/78e55ed0-12af-4ad8-bcdc-ac7eda35cffb)
+
+You should see a “usb-katapult_…” device there. If you don’t, then double-click the RESET button on your board and ls /dev/serial/by-id again.
+
+
 
 ## Flashing Klipper to the Linux/can board
 ### Compile Klipper for the Linux/can board
