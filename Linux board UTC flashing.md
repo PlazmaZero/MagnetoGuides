@@ -68,9 +68,8 @@ is_system_service: False
 
 3. You can then flash the Katapult firmware to your mainboard by running
 
-`cd ~/katapult
-make
-sudo dfu-util -R -a 0 -s 0x08000000:leave -D ~/katapult/out/katapult.bin -d 0483:df11`
+`cd ~/katapult`
+`sudo dfu-util -R -a 0 -s 0x08000000:leave -D ~/katapult/out/katapult.bin -d 0483:df11`
 
 4. If the result shows an “Error during download get_status” or something, but above it it still has “File downloaded successfully” then it still flashed OK and you can ignore that error.
 
