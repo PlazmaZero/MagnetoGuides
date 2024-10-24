@@ -62,7 +62,7 @@ is_system_service: False
 ### Flash Katapult firmware
 1. Connect the linux hub USB C port to the pi while holding down the boot button
 
-2. To confirm it’s in DFU mode you can run the command lsusb and look for an entry of “STMicroelectronics STM Device in DFU mode”
+2. To confirm it’s in DFU mode you can run the command `lsusb` and look for an entry of “STMicroelectronics STM Device in DFU mode”
 
    ![image](https://github.com/user-attachments/assets/4cc16aa0-5f8f-4f65-b938-7eb0a0963a48)
 
@@ -109,7 +109,7 @@ You should see a “usb-katapult_…” device there. If you don’t, then doubl
 ### Flash the Klipper firmware to the toolhead board
 1) Make sure the `klipper` service stopped.
 `sudo service klipper stop`
-3) Run an ls /dev/serial/by-id/ and take note of the Katapult device that it shows:
+3) Run an `ls /dev/serial/by-id/` and take note of the Katapult device that it shows:
    ![image](https://github.com/user-attachments/assets/2f5e8d10-dbbf-4e5a-b8b9-51ab143a6940)
 
 4) If the above command didn’t show a ‘katapult’ device, or threw a “no such file or directory” error, then quickly double-click the RESET button on your mainboard and run the command again. Until you get a result from a `ls /dev/serial/by-id/` there is no point doing further steps below.
