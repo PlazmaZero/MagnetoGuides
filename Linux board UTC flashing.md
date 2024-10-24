@@ -13,11 +13,14 @@
 
    ![image](https://github.com/user-attachments/assets/c12e491d-dc5f-4cf3-82d6-40b39e779899)
 
-6. Now you need to click on the “OB” button on the left. Expand the User Configuration setting and scroll down until you find the nBOOT_SEL option. You will need to uncheck that, and then hit Apply
+   If you are using a offbrand STLink you may have to update the firmware version by unplugging and repluging the STLink and hitting "refresh device list" at the same time.
+   Otherwise you can try plugging in the STLink to the USB and hitting connect quickly afterwards while releasing the RST button.
+
+7. Now you need to click on the “OB” button on the left. Expand the User Configuration setting and scroll down until you find the nBOOT_SEL option. You will need to uncheck that, and then hit Apply
 
    ![image](https://github.com/user-attachments/assets/539f569b-fd50-4c8a-9a04-92f2cc4c1d0d)
 
-7. If all goes well, you should get a message the option bytes were successfully programmed. Now your boot button should work as expected.
+8. If all goes well, you should get a message the option bytes were successfully programmed. Now your boot button should work as expected.
 
 From here you can flash whatever you want to the device.
 
