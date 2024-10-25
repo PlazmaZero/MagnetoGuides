@@ -106,7 +106,7 @@ You should see a “usb-katapult_…” device there. If you don’t, then doubl
 6. You should now have a `klipper.bin` file at `~/home/pi/klipper/out`
 
 
-### Flash the Klipper firmware to the toolhead board
+### Flash the Klipper firmware to the Linux/Can board
 1) Make sure the `klipper` service stopped.
 `sudo service klipper stop`
 3) Run an `ls /dev/serial/by-id/` and take note of the Katapult device that it shows
