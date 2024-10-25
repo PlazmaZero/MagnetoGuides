@@ -117,5 +117,29 @@ You should see a “usb-katapult_…” device there. If you don’t, then doubl
 6) Run this command to install klipper firmware via Katapult via USB. Use the device ID you just retrieved in the above ls command.
 `python3 ~/katapult/scripts/flashtool.py -f ~/klipper/out/klipper.bin -d /dev/serial/by-id/usb-katapult_your_board_id`
 
+## Common Problems
+### Toolhead board fails to connect when using "Save & Restart" after updating a configuration file.
+1. SSH into the printer
+2.  `sudo nano /etc/network/interfaces.d/can0`
+
+   ![image](https://github.com/user-attachments/assets/eea79b04-794b-4655-9719-5f65dcef0de2)
+   
+3.This will open (or create if it doesn’t exist) a file called ‘can0’ in which you need to enter the following information:
+
+   ```
+   allow-hotplug can0
+   iface can0 can static
+     bitrate 250000
+     up ip link set can0 txqueuelen 128
+   ```
+
+   ![image](https://github.com/user-attachments/assets/8998e93b-0916-4ce3-a025-c05e98e0a25b)
+
+Press Ctrl+X to save the can0 file.
+
+The “allow-hotplug” helps the CAN nodes come back online when doing a “firmware_restart” within Klipper. “bitrate” dictates the speed at which your CAN network runs at. Kevin O’Connor (of Klipper fame) recommends a 1M speed for this to help with high-bandwidth and timing-critical operations (ADXL Shaper calibration and mesh probing for example). To complement a high bitrate, setting a high transmit queue length “txqueuelen” of 1024 helps minimise “Timer too close” errors.
+
+Once the can0 file is created just reboot the Pi with a sudo reboot.
+
 
  
