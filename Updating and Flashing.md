@@ -29,13 +29,13 @@ is_system_service: False
 1. cd to the Katapult directory
 `cd ~/katapult`
 2. Run make clean
-`make clean KCONFIG_CONFIG=config.sb2040v2`
+`make clean KCONFIG_CONFIG=config.rp2040`
 3. Open menuconfig
-`make menuconfig KCONFIG_CONFIG=config.sb2040v2`
+`make menuconfig KCONFIG_CONFIG=config.rp2040`
 ![image](https://github.com/user-attachments/assets/651810d2-422a-445a-9b28-ad9fe7391e3f)
 4. Quit and save the configuration
 5. Run the make command to compile the firmware
-`make KCONFIG_CONFIG=config.sb2040v2 -j4`
+`make KCONFIG_CONFIG=config.rp2040 -j4`
 6. You should now have a katapult.uf2 file at ~/katapult/out/
 
 ### Flash Katapult firmware
@@ -57,13 +57,13 @@ is_system_service: False
 2. cd to the Klipper directory
 `cd ~/klipper`
 4. Run make clean
-`make clean KCONFIG_CONFIG=config.sb2040v2`
+`make clean KCONFIG_CONFIG=config.rp2040`
 5. Open menuconfig
-`make menuconfig KCONFIG_CONFIG=config.sb2040v2`
+`make menuconfig KCONFIG_CONFIG=config.rp2040`
 ![image](https://github.com/user-attachments/assets/e6ee2eca-058e-4afa-b06e-a738b4e41ca4)
 6. Quit and save the configuration
 7. Run the make command to compile the firmware
-`make KCONFIG_CONFIG=config.sb2040v2 -j4`
+`make KCONFIG_CONFIG=config.rp2040 -j4`
 6. You should now have a `klipper.bin` file at `~/home/pi/klipper/out`
 
 
