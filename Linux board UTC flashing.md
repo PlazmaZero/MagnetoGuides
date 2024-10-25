@@ -109,11 +109,12 @@ You should see a “usb-katapult_…” device there. If you don’t, then doubl
 ### Flash the Klipper firmware to the toolhead board
 1) Make sure the `klipper` service stopped.
 `sudo service klipper stop`
-3) Run an `ls /dev/serial/by-id/` and take note of the Katapult device that it shows:
+3) Run an `ls /dev/serial/by-id/` and take note of the Katapult device that it shows
+   
    ![image](https://github.com/user-attachments/assets/2f5e8d10-dbbf-4e5a-b8b9-51ab143a6940)
 
-4) If the above command didn’t show a ‘katapult’ device, or threw a “no such file or directory” error, then quickly double-click the RESET button on your mainboard and run the command again. Until you get a result from a `ls /dev/serial/by-id/` there is no point doing further steps below.
-5) Run this command to install klipper firmware via Katapult via USB. Use the device ID you just retrieved in the above ls command.
+5) If the above command didn’t show a ‘katapult’ device, or threw a “no such file or directory” error, then quickly double-click the RESET button on your mainboard and run the command again. Until you get a result from a `ls /dev/serial/by-id/` there is no point doing further steps below.
+6) Run this command to install klipper firmware via Katapult via USB. Use the device ID you just retrieved in the above ls command.
 `python3 ~/katapult/scripts/flashtool.py -f ~/klipper/out/klipper.bin -d /dev/serial/by-id/usb-katapult_your_board_id`
 
 
