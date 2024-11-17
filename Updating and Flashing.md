@@ -32,7 +32,8 @@ is_system_service: False
 `make clean KCONFIG_CONFIG=config.rp2040`
 3. Open menuconfig
 `make menuconfig KCONFIG_CONFIG=config.rp2040`
-![image](https://github.com/user-attachments/assets/651810d2-422a-445a-9b28-ad9fe7391e3f)
+![image](https://github.com/user-attachments/assets/015dbbb5-a1e5-4d23-a699-6357ae133fc8)
+
 4. Quit and save the configuration
 5. Run the make command to compile the firmware
 `make KCONFIG_CONFIG=config.rp2040 -j4`
@@ -45,7 +46,8 @@ is_system_service: False
 > **Note** If you are using a MACOS system you may need to use a USB hub between the mac and the toolhead board for the drive to show up.
 
 4. Press and hold the boot button on the toolboard.
-![image](https://github.com/user-attachments/assets/d928c441-95e1-46c5-bdbb-14487979be0a)
+![image](https://github.com/user-attachments/assets/ac6c48f9-7343-4722-b7c1-719ebff04718)
+
 6. While holding, insert the USB C cable to the port
 7. The LEDs on the board should light up and your computer should recognize an `RPI_RP2` drive.
 ![image](https://github.com/user-attachments/assets/a928a2cc-c4ff-402e-bcff-75ea1cc77959)
