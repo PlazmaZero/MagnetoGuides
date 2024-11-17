@@ -32,12 +32,13 @@ is_system_service: False
 `make clean KCONFIG_CONFIG=config.rp2040`
 3. Open menuconfig
 `make menuconfig KCONFIG_CONFIG=config.rp2040`
+
 ![image](https://github.com/user-attachments/assets/015dbbb5-a1e5-4d23-a699-6357ae133fc8)
 
-4. Quit and save the configuration
-5. Run the make command to compile the firmware
+5. Quit and save the configuration
+6. Run the make command to compile the firmware
 `make KCONFIG_CONFIG=config.rp2040 -j4`
-6. You should now have a katapult.uf2 file at ~/katapult/out/
+7. You should now have a katapult.uf2 file at ~/katapult/out/
 
 ### Flash Katapult firmware
 1. Disconnect all cables from the toolhead board and make sure the printer is off.
@@ -46,11 +47,13 @@ is_system_service: False
 > **Note** If you are using a MACOS system you may need to use a USB hub between the mac and the toolhead board for the drive to show up.
 
 4. Press and hold the boot button on the toolboard.
+
 ![image](https://github.com/user-attachments/assets/ac6c48f9-7343-4722-b7c1-719ebff04718)
 
 6. While holding, insert the USB C cable to the port
 7. The LEDs on the board should light up and your computer should recognize an `RPI_RP2` drive.
-![image](https://github.com/user-attachments/assets/a928a2cc-c4ff-402e-bcff-75ea1cc77959)
+![image](https://github.com/user-attachments/assets/1fee934b-d738-4b8e-8b15-527ea4281786)
+
 8. Copy the downloaded .uf2/.bin firmware file to the RPI_RP2 disk. The drive will automatically eject after copying.
 
 ## Flashing Klipper to the toolhead board
@@ -62,7 +65,8 @@ is_system_service: False
 `make clean KCONFIG_CONFIG=config.rp2040`
 5. Open menuconfig
 `make menuconfig KCONFIG_CONFIG=config.rp2040`
-![image](https://github.com/user-attachments/assets/e6ee2eca-058e-4afa-b06e-a738b4e41ca4)
+![image](https://github.com/user-attachments/assets/3a714926-e39a-4ce3-bf78-a8305c5ae5b1)
+
 6. Quit and save the configuration
 7. Run the make command to compile the firmware
 `make KCONFIG_CONFIG=config.rp2040 -j4`
@@ -125,7 +129,8 @@ is_system_service: False
 `make clean KCONFIG_CONFIG=config.STM32H723`
 5. Open menuconfig
 `make menuconfig KCONFIG_CONFIG=config.STM32H723`
-![image](https://github.com/user-attachments/assets/ca303aca-6d1d-4e0e-8b69-11459a0bb381)
+![image](https://github.com/user-attachments/assets/cdc63619-7a28-436e-8a01-ebabe4590ce2)
+
 6. Quit and save the configuration
 7. Run the make command to compile the firmware
 `make KCONFIG_CONFIG=config.STM32H723 -j4`
@@ -151,7 +156,8 @@ is_system_service: False
 
 2. Use a tool such as cyberduck or winscp to copy the firmware.bin file off your Pi, onto your computer.
 
-   ![image](https://github.com/user-attachments/assets/88f340dd-9e2c-44d2-8908-4a63c9cf21a4)
+   ![image](https://github.com/user-attachments/assets/e76a922e-e2da-4014-bb71-5796852aed1a)
+
 
 
 3. Ensure that your sdcard is formatted FAT32  (NOT EXFAT!)
@@ -162,7 +168,7 @@ is_system_service: False
 8. After a few seconds, the Octopus should be flashed
 9. You can confirm that the flash was successful by running `ls /dev/serial/by-id`.  If the flash was successful, this should now show a klipper device, similar to:
 
-   ![image](https://github.com/user-attachments/assets/8d81e78b-3405-42f9-b36b-58667140057b)
+   ![image](https://github.com/user-attachments/assets/885775a8-a60e-4912-bc32-d8d11885149c)
 
 (note: this test is not applicable if the firmware was compiled for UART, rather than USB)
 
@@ -187,7 +193,7 @@ is_system_service: False
 11. Power on the Octopus
 12. You can confirm that the flash was successful by running `ls /dev/serial/by-id`. If the flash was successful, this should now show a klipper device, similar to:
 
-   ![image](https://github.com/user-attachments/assets/574e03e8-9e71-48ff-834d-a7e4036ec0fd)
+   ![image](https://github.com/user-attachments/assets/f4e824df-25cb-4cb4-b5d5-2caf1608a8fb)
 
    (note: this test is not applicable if the firmware was compiled for UART, rather than USB)
 
