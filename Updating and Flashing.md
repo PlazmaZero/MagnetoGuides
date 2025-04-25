@@ -65,7 +65,8 @@ is_system_service: False
 `make clean KCONFIG_CONFIG=config.rp2040`
 5. Open menuconfig
 `make menuconfig KCONFIG_CONFIG=config.rp2040`
-![image](https://github.com/user-attachments/assets/3a714926-e39a-4ce3-bf78-a8305c5ae5b1)
+<img width="567" alt="image" src="https://github.com/user-attachments/assets/441e90dd-7a5e-49d2-a0b6-c3206dc6024e" />
+
 
 6. Quit and save the configuration
 7. Run the make command to compile the firmware
