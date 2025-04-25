@@ -184,7 +184,7 @@ is_system_service: False
 1. Power off Octopus
 2. Install the BOOT0 jumper
    
-   ![image](https://github.com/user-attachments/assets/d902c85d-3ae1-4a7c-861f-d2f114eabebc)
+   <img width="567" alt="image" src="https://github.com/user-attachments/assets/9a991128-0b42-400a-a483-5f08c970c58b" />
 
 4. Connect Octopus & Pi via USB-C
 5. Power on Octopus
