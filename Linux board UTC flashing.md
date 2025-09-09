@@ -100,6 +100,8 @@ You should see a “usb-katapult_…” device there. If you don’t, then doubl
 
    ![image](https://github.com/user-attachments/assets/8475819d-1f1d-4eee-95e2-8c469f9bc967)
 
+   (Use 250000 for the bit rate if that is the speed that will be used in the future)
+
 7. Quit and save the configuration
 8. Run the make command to compile the firmware
 `make KCONFIG_CONFIG=config.STM32G0B1 -j4`
