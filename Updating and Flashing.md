@@ -210,8 +210,8 @@ Then I compiled the klipper binary with these settings, and sent it over can wit
 1.
     ```
    cd ~/katapult
-   `make clean KCONFIG_CONFIG=config.STM32H723`
-   `make menuconfig KCONFIG_CONFIG=config.STM32H723`
+   make clean KCONFIG_CONFIG=config.STM32H723
+   make menuconfig KCONFIG_CONFIG=config.STM32H723
     ```
 
 2. 
