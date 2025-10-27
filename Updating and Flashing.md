@@ -229,7 +229,7 @@ Then I compiled the klipper binary with these settings, and sent it over can wit
    
     ```
     cd ~/katapult
-   make
+   make KCONFIG_CONFIG=config.STM32H723 -j4
    sudo dfu-util -R -a 0 -s 0x08000000:mass-erase:force:leave -D ~/katapult/out/katapult.bin -d 0483:df11
    ```
 
