@@ -205,6 +205,161 @@ is_system_service: False
 
 Then I compiled the klipper binary with these settings, and sent it over can with the instructions from the Katapult github: https://github.com/Arksine/katapult#uploading-klipper
 
+#### Option 3: Katapult Install
+
+1.
+    ```
+   cd ~/katapult
+   make menuconfig
+    ```
+
+2. 
+   Compile the firmware with make. You will now have a katapult.bin at in your ~/katapult/out/katapult.bin.
+   
+   To flash, connect your board to the Pi via USB then put the board into DFU mode (this should be included in the hardware_config section for your board, but if it’s not then the user manual from the manufacturer should have the instructions).
+   
+   To confirm it’s in DFU mode you can run the command lsusb and look for an entry of “STMicroelectronics STM Device in DFU mode”
+   
+   <img width="705" height="41" alt="image" src="https://github.com/user-attachments/assets/624dc78a-66fd-41aa-ae32-9b5996b447d9" />
+
+
+   You can then flash the Katapult firmware to your mainboard by running
+   
+   
+    ```
+    cd ~/katapult
+   make
+   sudo dfu-util -R -a 0 -s 0x08000000:mass-erase:force:leave -D ~/katapult/out/katapult.bin -d 0483:df11
+   ```
+
+    If the result shows an “Error during download get_status” or something, but above it it still has “File downloaded successfully” then it still flashed OK and you can ignore that error.
+
+    If you get a different error and do not see a “File downloaded successfully” then try:
+
+    `sudo dfu-util -R -a 0 -s 0x08000000:leave -D ~/katapult/out/katapult.bin -d 0483:df11`
+
+<img width="700" height="111" alt="image" src="https://github.com/user-attachments/assets/28982ac5-d8b4-49f2-9228-c64f421d9826" />
+
+
+Katapult should now be successfully flashed. Take your mainboard out of DFU mode (it might require removing jumpers and rebooting, or just rebooting). Check that Katapult is installed and by running
+
+ls /dev/serial/by-id/*
+
+<img width="622" height="33" alt="image" src="https://github.com/user-attachments/assets/61206fb7-9f95-44e7-a344-6594d5e5aaa8" />
+
+
+You should see a “usb-katapult_…” device there. If you don’t, then double-click the RESET button on your board and ls /dev/serial/by-id again.
+
+ ##### Katapult Config
+<img width="816" height="270" alt="image" src="https://github.com/user-attachments/assets/2cf74912-d2bf-4958-8bcd-3edad3603268" />
+
+
+##### Klipper flashing
+
+Stop the Klipper service on the Pi by running:
+
+`sudo service klipper stop`
+
+Move into the klipper directory on the Pi by running:
+
+`cd ~/klipper`
+
+Then go into the klipper configuration menu by running:
+
+```
+make clean KCONFIG_CONFIG=config.STM32H723
+make menuconfig KCONFIG_CONFIG=config.STM32H723
+```
+
+##### Klipper Config
+<img width="656" height="162" alt="image" src="https://github.com/user-attachments/assets/bda11ba2-4c12-4ebe-903d-86d00e51f0e9" />
+
+You can now flash Klipper to your board using the Katpult /dev/serial ID you found earlier by running:
+
+`make KCONFIG_CONFIG=config.STM32H723 flash FLASH_DEVICE=/dev/serial/by-id/usb-katapult_your_board_id`
+
+<img width="1018" height="53" alt="image" src="https://github.com/user-attachments/assets/61e36b44-ac4a-4b5b-9166-8a71aabc60a2" />
+
+
+<img width="571" height="296" alt="image" src="https://github.com/user-attachments/assets/4a91d8a6-0db3-4854-b321-ca6eb23ee885" />
+
+
+Don’t worry about the “CanBoot” or “CAN Flash Success”, we aren’t flashing anything CANBUS, this is just an idiosyncracy of the klipper make flash tool.
+
+Klipper should now be successfully flashed. Check that it is installed and by running
+
+`ls /dev/serial/by-id/*`
+
+<img width="586" height="38" alt="image" src="https://github.com/user-attachments/assets/9f23feef-01ef-45ef-9dc2-2d7db07e244f" />
+
+
+You should see a “usb-klipper_…” device there instead of “usb-katapult_…”
+
+Use this USB ID in the [mcu] section of your printer.cfg in order for Klipper (on Pi) to connect to the mainboard. (If this is a secondary board, like a second SKR for Z motors, or a Toolhead board, then make sure to name the mcu section, [mcu some_name] as per the Klipper docs).
+
+<img width="720" height="84" alt="image" src="https://github.com/user-attachments/assets/4a8f0829-69cf-4222-a360-e20dfa92157e" />
+
+
+Start the Klipper service on the Pi again by running:
+
+`sudo service klipper start`
+
+## Updating octopus via katapult
+Stop the Klipper service on the Pi by running:
+
+`sudo service klipper stop`
+
+Move into the klipper directory on the Pi by running:
+
+`cd ~/klipper`
+
+Then go into the klipper configuration menu by running:
+
+```
+make clean KCONFIG_CONFIG=config.STM32H723
+make menuconfig KCONFIG_CONFIG=config.STM32H723
+```
+
+You can find screenshots of settings for common toolheads in the Hardware Config section.
+
+Otherwise, check the user manual for your board as it should list the proper klipper menuconfig settings.
+
+Once you have the correct options selected, press Q to quit the menu (it will ask to save, choose yes).
+
+You can now flash Klipper to your board using the existing Klipper /dev/serial ID you have in your printer.cfg file:
+
+<img width="720" height="84" alt="image" src="https://github.com/user-attachments/assets/aaa7dd31-9f06-43d8-b5f4-73df2eab3016" />
+
+
+or you can find it by running `ls /dev/serial/by-id/*`
+
+<img width="586" height="38" alt="image" src="https://github.com/user-attachments/assets/e23bcbde-8db0-4cb0-96cf-ec45581c3bfb" />
+
+
+Then you can simply flash klipper using this device ID by running:
+
+`make KCONFIG_CONFIG=config.STM32H723 flash FLASH_DEVICE=/dev/serial/by-id/usb-Klipper_your_board_id`
+
+<img width="997" height="56" alt="image" src="https://github.com/user-attachments/assets/fd938bfc-4764-403c-8071-7639b3bc93f2" />
+
+
+<img width="571" height="296" alt="image" src="https://github.com/user-attachments/assets/1f925ba2-19cd-4dc7-a3a1-bf1a0d3e7a02" />
+
+
+Don’t worry about the “CanBoot” or “CAN Flash Success”, we aren’t flashing anything CANBUS, this is just an idiosyncracy of the klipper make flash tool.
+
+Klipper should now be successfully flashed. Double check that it still shows up as a Klipper device:
+
+`ls /dev/serial/by-id/*`
+
+<img width="586" height="38" alt="image" src="https://github.com/user-attachments/assets/5eff1993-8b14-41ab-8829-183faca5afea" />
+
+
+Then start the Klipper service on the Pi again by running:
+
+`sudo service klipper start`
+
+
 
 ## Create the magneto service file
 ### Prerequisite files from orginal magneto(not needed if updating with stock magneto hardware)
