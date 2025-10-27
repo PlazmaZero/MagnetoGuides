@@ -219,7 +219,7 @@ Then I compiled the klipper binary with these settings, and sent it over can wit
    
    To flash, connect your board to the Pi via USB then put the board into DFU mode (this should be included in the hardware_config section for your board, but if it’s not then the user manual from the manufacturer should have the instructions).
    
-   To confirm it’s in DFU mode you can run the command lsusb and look for an entry of “STMicroelectronics STM Device in DFU mode”
+   To confirm it’s in DFU mode you can run the command `lsusb` and look for an entry of “STMicroelectronics STM Device in DFU mode”
    
    <img width="705" height="41" alt="image" src="https://github.com/user-attachments/assets/624dc78a-66fd-41aa-ae32-9b5996b447d9" />
 
@@ -244,7 +244,7 @@ Then I compiled the klipper binary with these settings, and sent it over can wit
 
 Katapult should now be successfully flashed. Take your mainboard out of DFU mode (it might require removing jumpers and rebooting, or just rebooting). Check that Katapult is installed and by running
 
-ls /dev/serial/by-id/*
+`ls /dev/serial/by-id/*`
 
 <img width="622" height="33" alt="image" src="https://github.com/user-attachments/assets/61206fb7-9f95-44e7-a344-6594d5e5aaa8" />
 
