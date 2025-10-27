@@ -210,11 +210,12 @@ Then I compiled the klipper binary with these settings, and sent it over can wit
 1.
     ```
    cd ~/katapult
-   make menuconfig
+   `make clean KCONFIG_CONFIG=config.STM32H723`
+   `make menuconfig KCONFIG_CONFIG=config.STM32H723`
     ```
 
 2. 
-   Compile the firmware with make. You will now have a katapult.bin at in your ~/katapult/out/katapult.bin.
+   Compile the firmware with `make KCONFIG_CONFIG=config.STM32H723 -j4`. You will now have a katapult.bin at in your ~/katapult/out/katapult.bin.
    
    To flash, connect your board to the Pi via USB then put the board into DFU mode (this should be included in the hardware_config section for your board, but if it’s not then the user manual from the manufacturer should have the instructions).
    
