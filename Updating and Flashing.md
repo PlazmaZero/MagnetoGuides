@@ -66,7 +66,8 @@ is_system_service: False
 5. Open menuconfig
 `make menuconfig KCONFIG_CONFIG=config.rp2040`
 <img width="567" alt="image" src="https://github.com/user-attachments/assets/441e90dd-7a5e-49d2-a0b6-c3206dc6024e" />
-**NOTE Try disabling "step on both edges" if there are issues with CAN**
+
+**NOTE: Try disabling "step on both edges" if there are issues with CAN**
 
 
 6. Quit and save the configuration
