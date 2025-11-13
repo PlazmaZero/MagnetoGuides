@@ -1,4 +1,7 @@
 # Updating MagnetoX Klipper version
+
+![wiring_system_diagram](https://github.com/user-attachments/assets/6ea4075f-9883-476f-b856-c10f66f90058)
+
 ## What to do after klipper update
 1. install gcode shell command with KIAUH
 2. **Update from Klipper 10 to Klipper 12 only**:
